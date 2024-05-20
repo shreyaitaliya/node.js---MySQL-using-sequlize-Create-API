@@ -4,7 +4,7 @@ const sequelize = db.sequelize;
 
 
 module.exports = (sequelize, DataTypes) => {
-    const subcategory = sequelize.define('subcategory', {
+    const duplicate_sub = sequelize.define('duplicate_subcategory', {
         subcategoryid: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -19,9 +19,9 @@ module.exports = (sequelize, DataTypes) => {
         })
 
 
-    subcategory.belongsTo(sequelize.models.category);
+    duplicate_sub.belongsTo(sequelize.models.category);
     // subcategory.belongsTo(sequelize.models.user);
 
-    return subcategory
+    return duplicate_sub
 }
 

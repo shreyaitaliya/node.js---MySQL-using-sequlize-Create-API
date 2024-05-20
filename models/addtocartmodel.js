@@ -4,11 +4,11 @@ const sequelize = db.sequelize;
 
 
 module.exports = (sequelize, DataTypes) => {
-    const subcategory = sequelize.define('subcategory', {
+    const addtocart = sequelize.define('addtocart', {
         subcategoryid: {
             type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
+            // primaryKey: true,
+            // autoIncrement: true
         },
         subcategoryname: DataTypes.STRING,
         detailssubcategory: DataTypes.STRING,
@@ -19,9 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         })
 
 
-    subcategory.belongsTo(sequelize.models.category);
-    // subcategory.belongsTo(sequelize.models.user);
+    addtocart.belongsTo(sequelize.models.category);
+    // addtocart.belongsTo(sequelize.models.subcategory);    
+    addtocart.belongsTo(sequelize.models.user);
 
-    return subcategory
+    return addtocart
 }
 

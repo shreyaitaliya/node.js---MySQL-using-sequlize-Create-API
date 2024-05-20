@@ -28,6 +28,9 @@ const categorycontroler = require('../controllers/categorycontroller');
 //subcategory controller
 const subcategorycontroller = require('../controllers/subvcategory');
 
+//add to cart
+const addtocartcontroller = require('../controllers/addtocartcontroller');
+
 //user routes
 routes.post('/adduser', usercontroller.adduser);
 routes.post('/login', usercontroller.login);
@@ -40,7 +43,13 @@ routes.delete('/categorydelete', categorycontroler.categorydelete);
 routes.put('/categoryupdate', categorycontroler.categoryupdate);
 
 //subcategory routes
-routes.post('/subcategoryadd', upload, subcategorycontroller.subcategoryadd);
-routes.get('/subcateview', upload, subcategorycontroller.subcateview);
+routes.post('/subcategoryadd', verifytoken, subcategorycontroller.subcategoryadd);
+routes.get('/subcateview', verifytoken, subcategorycontroller.subcateview);
+routes.delete('/deletesubcategory', verifytoken, subcategorycontroller.deletesubcategory);
+routes.put('/editsubcategory', verifytoken, subcategorycontroller.editsubcategory);
+
+//add to cart
+routes.post('/addtocartadd', verifytoken, addtocartcontroller.addtocartadd);
+routes.get('/addtocartview', verifytoken, addtocartcontroller.addtocartview);
 
 module.exports = routes;
